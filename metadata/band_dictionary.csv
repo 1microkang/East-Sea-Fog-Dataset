@@ -1,0 +1,21 @@
+﻿geotiff_band,variable,ahi_short_name,spectral_region,native_resolution_km,h8_central_wavelength_um,h9_central_wavelength_um,unit,released_quantity
+1,B01,V1,Visible,1,0.47063,0.47059,dimensionless,Top-of-atmosphere albedo
+2,B02,V2,Visible,1,0.51,0.50993,dimensionless,Top-of-atmosphere albedo
+3,B03,VS,Visible,0.5,0.63914,0.63972,dimensionless,Top-of-atmosphere albedo
+4,B04,N1,Near infrared,1,0.8567,0.85668,dimensionless,Top-of-atmosphere albedo
+5,B05,N2,Near infrared,2,1.6101,1.6065,dimensionless,Top-of-atmosphere albedo
+6,B06,N3,Near infrared,2,2.2568,2.257,dimensionless,Top-of-atmosphere albedo
+7,B07,I4,Short-wave infrared,2,3.8853,3.8289,K,Brightness temperature
+8,B08,WV,Water-vapour infrared,2,6.2429,6.2479,K,Brightness temperature
+9,B09,W2,Water-vapour infrared,2,6.941,6.9555,K,Brightness temperature
+10,B10,W3,Water-vapour infrared,2,7.3467,7.3437,K,Brightness temperature
+11,B11,MI,Infrared window,2,8.5926,8.5936,K,Brightness temperature
+12,B12,O3,Ozone absorption,2,9.6372,9.6274,K,Brightness temperature
+13,B13,LR,Thermal infrared window,2,10.4073,10.4074,K,Brightness temperature
+14,B14,L2,Thermal infrared window,2,11.2395,11.208,K,Brightness temperature
+15,B15,I2,Thermal infrared window,2,12.3806,12.3648,K,Brightness temperature
+16,B16,CO,CO2 absorption,2,13.2807,13.3107,K,Brightness temperature
+17,satellite_azimuth_angle,,Viewing geometry,,,,degree,Satellite azimuth angle
+18,satellite_zenith_angle,,Viewing geometry,,,,degree,Satellite zenith angle
+19,solar_azimuth_angle,,Illumination geometry,,,,degree,Solar azimuth angle
+20,solar_zenith_angle,,Illumination geometry,,,,degree,Solar zenith angle

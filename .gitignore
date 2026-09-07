@@ -2,6 +2,9 @@
 __pycache__/
 *.py[codz]
 *$py.class
+path_config.json
+*_audit.csv
+*_audit.json
 
 # C extensions
 *.so

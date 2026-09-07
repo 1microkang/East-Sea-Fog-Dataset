@@ -1,0 +1,20 @@
+{
+  "manifest_rows": 681,
+  "unique_scene_ids": 681,
+  "annual_manifest_counts": {
+    "2020": 158,
+    "2021": 141,
+    "2022": 244,
+    "2023": 138
+  },
+  "catalogue_rows": 87,
+  "annual_catalogue_retained_mask_counts": {
+    "2020": 158,
+    "2021": 141,
+    "2022": 244,
+    "2023": 138
+  },
+  "status": "pass",
+  "error_count": 0,
+  "errors": []
+}

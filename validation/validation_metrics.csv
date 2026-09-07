@@ -1,0 +1,4 @@
+source,H,M,F,C,n,accuracy_percent,precision_percent,recall_percent,csi_percent
+Coastal stations,306,41,71,21276,21694,99.48,81.17,88.18,73.21
+ICOADS,89,12,7,1453,1561,98.78,92.71,88.12,82.41
+CALIOP,191,105,29,734,1059,87.35,86.82,64.53,58.77

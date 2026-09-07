@@ -1,0 +1,4 @@
+source,evidence_type,count_type,H,M,F,C,n,coverage_note
+Coastal stations,near-surface validation,effective count after quality control,306,41,71,21276,21694,2020-2023
+ICOADS,near-surface validation,effective count after quality control,89,12,7,1453,1561,2020-2023
+CALIOP,secondary profile validation,integer profile count,191,105,29,734,1059,1059 profiles matched to 11 masks from 2020-2022

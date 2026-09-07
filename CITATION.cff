@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "Please cite the Zenodo dataset record and this software repository when reusing these materials."
+title: "Processing and annotation code for the East China Sea event-based daytime sea-fog dataset"
+type: software
+authors:
+  - family-names: Kang
+    given-names: Xiao
+  - family-names: Li
+    given-names: Yuejun
+  - family-names: Wu
+    given-names: Nan
+  - family-names: Fu
+    given-names: Randi
+  - family-names: Jin
+    given-names: Wei
+repository-code: "https://github.com/1microkang/East-Sea-Fog-Dataset"
+url: "https://github.com/1microkang/East-Sea-Fog-Dataset"
+version: "1.0.0"
+preferred-citation:
+  type: dataset
+  authors:
+    - family-names: Kang
+      given-names: Xiao
+    - family-names: Li
+      given-names: Yuejun
+    - family-names: Wu
+      given-names: Nan
+    - family-names: Fu
+      given-names: Randi
+    - family-names: Jin
+      given-names: Wei
+  title: "East China Sea event-based daytime sea-fog image and mask dataset (2020–2023)"
+  year: 2026
+  version: "1.0.0"
+  publisher: Zenodo
+  doi: "10.5281/zenodo.21847718"
+  url: "https://doi.org/10.5281/zenodo.21847718"
