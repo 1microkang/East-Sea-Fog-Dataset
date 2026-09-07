@@ -138,8 +138,4 @@ The final citation should be copied from the public Zenodo landing page after pu
 
 Xiao Kang and Yuejun Li contributed equally. The author order is Xiao Kang, Yuejun Li, Nan Wu, Randi Fu and Wei Jin.
 
-## Reuse boundary
-
-This event-guided, daytime-only archive is not a continuous or climatologically unbiased time series. Annual scene counts and sea-fog pixel fractions should not be interpreted as estimates of sea-fog climatological frequency or interannual change.
-
 Questions and reproducibility reports may be submitted through the GitHub issue tracker.
