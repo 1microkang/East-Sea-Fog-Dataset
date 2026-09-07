@@ -29,7 +29,7 @@ preferred-citation:
       given-names: Randi
     - family-names: Jin
       given-names: Wei
-  title: "East China Sea event-based daytime sea-fog image and mask dataset (2020–2023)"
+  title: "An event-based daytime sea-fog image and mask dataset for the East China Sea from 2020 to 2023"
   year: 2026
   version: "1.0.0"
   publisher: Zenodo

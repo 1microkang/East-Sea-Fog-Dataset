@@ -130,7 +130,7 @@ The repository provides aggregate results matching the manuscript. It does not r
 
 Until the Zenodo record is published, cite the reserved dataset record as:
 
-> Kang, X., Li, Y., Wu, N., Fu, R. & Jin, W. *East China Sea event-based daytime sea-fog image and mask dataset (2020–2023)*, version 1.0.0. Zenodo. <https://doi.org/10.5281/zenodo.21847718> (2026).
+> Kang, X., Li, Y., Wu, N., Fu, R. & Jin, W. *An event-based daytime sea-fog image and mask dataset for the East China Sea from 2020 to 2023*, version 1.0.0. Zenodo. <https://doi.org/10.5281/zenodo.21847718> (2026).
 
 The final citation should be copied from the public Zenodo landing page after publication. If the dataset version changes, cite the version-specific DOI associated with the files actually used.
 
