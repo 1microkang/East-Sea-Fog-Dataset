@@ -56,6 +56,7 @@ See [`metadata/band_dictionary.csv`](metadata/band_dictionary.csv) for the compl
 │   ├── band_dictionary.csv
 │   ├── event_catalogue_2020_2023.csv
 │   ├── file_manifest_2020_2023.csv
+│   ├── SHA256SUMS_archives.txt
 │   └── SHA256SUMS_images_masks.txt
 └── validation/
     ├── README.md
@@ -63,7 +64,7 @@ See [`metadata/band_dictionary.csv`](metadata/band_dictionary.csv) for the compl
     └── validation_metrics.csv
 ```
 
-`file_manifest_2020_2023.csv` contains one row per released image–mask pair and records the scene identifier, UTC acquisition time, relative paths, raster structure, mask values and SHA-256 checksums. `event_catalogue_2020_2023.csv` is a date-level catalogue; its rows must not be interpreted as statistically independent meteorological events.
+`file_manifest_2020_2023.csv` contains one row per released image–mask pair and records the scene identifier, UTC acquisition time, relative paths, raster structure, mask values and SHA-256 checksums. `event_catalogue_2020_2023.csv` is a date-level catalogue; its rows must not be interpreted as statistically independent meteorological events. The two checksum lists record the frozen local hashes; the four archive hashes should be checked again against the final public Zenodo files after publication.
 
 ## Processing and annotation
 
