@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 """Convert JAXA P-Tree Himawari L1 gridded NetCDF scenes to GeoTIFF.
 
-The output follows the 20-band layout described in the accompanying Data
-Descriptor. The script is intended for the 0.02-degree full-disk Level-1
-gridded product used for the 2020-2023 dataset.
+The output follows the 20-layer structure described in the accompanying Data
+Descriptor. The first 16 layers contain AHI spectral-band data, and the final
+four layers contain angular variables. The script is intended for the
+0.02-degree full-disk Level-1 gridded product used for the 2020-2023 dataset.
 
 The NetCDF packed values are decoded explicitly. For albedo_01-albedo_06,
 the JAXA correction factor and correction offset are applied after the NetCDF
 scale factor and add offset. Thermal bands and geometry variables use their
 NetCDF scale factor and add offset. No solar-zenith division is performed:
-the released visible/near-infrared quantity is the P-Tree top-of-atmosphere
-albedo, defined by the provider as reflectance multiplied by cos(SOZ).
+the released visible/near-infrared quantity is the P-Tree source-product
+albedo, defined by the provider as top-of-atmosphere reflectance multiplied
+by cos(SOZ).
 """
 
 from __future__ import annotations
@@ -30,8 +32,8 @@ TBB_VARIABLES = [f"tbb_{band:02d}" for band in range(7, 17)]
 GEOMETRY_VARIABLES = ["SAA", "SAZ", "SOA", "SOZ"]
 OUTPUT_VARIABLES = ALBEDO_VARIABLES + TBB_VARIABLES + GEOMETRY_VARIABLES
 
-BAND_DESCRIPTIONS = [
-    *(f"AHI B{band:02d} top-of-atmosphere albedo" for band in range(1, 7)),
+LAYER_DESCRIPTIONS = [
+    *(f"AHI B{band:02d} source-product albedo" for band in range(1, 7)),
     *(f"AHI B{band:02d} brightness temperature (K)" for band in range(7, 17)),
     "Satellite azimuth angle (degree)",
     "Satellite zenith angle (degree)",
@@ -128,12 +130,12 @@ def convert_scene(
         if missing:
             raise KeyError(f"Missing required variables: {', '.join(missing)}")
 
-        bands = [
+        layers = [
             read_packed_window(dataset.variables[name], row_slice, col_slice)
             for name in OUTPUT_VARIABLES
         ]
 
-    stack = np.stack(bands, axis=0)
+    stack = np.stack(layers, axis=0)
     if stack.shape != (20, EXPECTED_HEIGHT, EXPECTED_WIDTH):
         raise ValueError(f"Unexpected output shape: {stack.shape}")
 
@@ -153,7 +155,7 @@ def convert_scene(
 
     with rasterio.open(output_path, "w", **profile) as destination:
         destination.write(stack)
-        for index, description in enumerate(BAND_DESCRIPTIONS, start=1):
+        for index, description in enumerate(LAYER_DESCRIPTIONS, start=1):
             destination.set_band_description(index, description)
 
     return f"written: {output_path.name}"
@@ -219,4 +221,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

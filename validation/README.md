@@ -1,4 +1,4 @@
-# Independent validation records
+# Technical validation records
 
 `validation_confusion_counts.csv` contains the frozen confusion-matrix counts reported in the manuscript. `validation_metrics.csv` contains ACC, PRE, REC and CSI recalculated from those counts.
 

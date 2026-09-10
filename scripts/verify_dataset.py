@@ -2,7 +2,7 @@
 """Verify metadata consistency and optionally inspect extracted dataset files.
 
 The script checks the frozen 681-row manifest, annual pair counts, unique scene
-identifiers, deterministic image-mask pairing, raster metadata, PNG values and
+identifiers, deterministic scene–mask pairing, raster metadata, PNG values and
 date-level catalogue totals. When ``--dataset-root`` is supplied, it also opens
 the released files and can recalculate their SHA-256 checksums.
 """
@@ -23,7 +23,7 @@ EXPECTED_ANNUAL_COUNTS = {2020: 158, 2021: 141, 2022: 244, 2023: 138}
 EXPECTED_TOTAL = 681
 EXPECTED_WIDTH = 450
 EXPECTED_HEIGHT = 450
-EXPECTED_BANDS = 20
+EXPECTED_LAYERS = 20
 EXPECTED_EPSG = 4326
 EXPECTED_PIXEL_SIZE = 0.02
 EXPECTED_MASK_VALUES = {0, 255}
@@ -99,7 +99,7 @@ def validate_manifest(
         expected_fields = {
             "width": EXPECTED_WIDTH,
             "height": EXPECTED_HEIGHT,
-            "band_count": EXPECTED_BANDS,
+            "layer_count": EXPECTED_LAYERS,
             "mask_width": EXPECTED_WIDTH,
             "mask_height": EXPECTED_HEIGHT,
             "epsg": EXPECTED_EPSG,
@@ -183,8 +183,8 @@ def inspect_files(
                 with rasterio.open(image_path) as source:
                     if source.width != EXPECTED_WIDTH or source.height != EXPECTED_HEIGHT:
                         problems.append("unexpected GeoTIFF dimensions")
-                    if source.count != EXPECTED_BANDS:
-                        problems.append("unexpected GeoTIFF band count")
+                    if source.count != EXPECTED_LAYERS:
+                        problems.append("unexpected GeoTIFF layer count")
                     if set(source.dtypes) != {"float32"}:
                         problems.append("unexpected GeoTIFF dtype")
                     epsg = source.crs.to_epsg() if source.crs else None
@@ -293,4 +293,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

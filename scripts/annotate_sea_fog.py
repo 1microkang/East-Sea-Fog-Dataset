@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-East China Sea daytime sea-fog annotation system
+East China Sea daytime sea fog annotation system
 
 This program is used for multispectral interpretation, SLIC-assisted
-delineation, binary-mask production, and image-mask overlay inspection.
+delineation, binary mask production, and scene–mask overlay inspection.
 
 Workflow boundary
 -----------------
-1. Candidate dates are determined outside this program using NMC sea-fog
+1. Candidate dates are determined outside this program using NMC sea fog
    bulletins.
 2. Himawari-8/9 AHI Level-1 data are calibrated, georeferenced, cropped,
-   and written as fixed 20-band GeoTIFF images before being loaded here.
+   and written as fixed 20-layer GeoTIFF files before being loaded here. The
+   files contain 16 AHI spectral bands and four angular variables.
 3. This program displays three AHI multispectral combinations and uses
    SLIC superpixels to assist expert annotation.
 4. Temporally matched ERA5 fields may be examined separately by experts
@@ -50,7 +51,7 @@ from tkinter import filedialog, messagebox
 # =============================================================================
 
 CONFIG = {
-    # Preprocessed 20-band Himawari GeoTIFF images
+    # Preprocessed 20-layer Himawari GeoTIFF files
     "INPUT_TIF_DIR": "",
 
     # Temporary four-panel images used by the annotation interface
@@ -71,7 +72,7 @@ class PathConfigDialog:
 
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title("East China Sea sea-fog annotation system")
+        self.root.title("East China Sea sea fog annotation system")
         self.root.geometry("820x420")
         self.root.resizable(True, True)
 
@@ -106,7 +107,7 @@ class PathConfigDialog:
     def _build_ui(self):
         title_label = tk.Label(
             self.root,
-            text="East China Sea daytime sea-fog annotation system",
+            text="East China Sea daytime sea fog annotation system",
             font=("Arial", 16, "bold"),
         )
         title_label.pack(pady=15)
@@ -126,7 +127,7 @@ class PathConfigDialog:
         frame.pack(fill="both", expand=True, padx=20)
 
         path_items = [
-            ("INPUT_TIF_DIR", "20-band GeoTIFF directory:"),
+            ("INPUT_TIF_DIR", "20-layer GeoTIFF directory:"),
             ("LABELME_IMAGE_DIR", "Annotation-image directory:"),
             ("FINAL_MASK_DIR", "Accepted-mask directory:"),
             ("OVERLAY_OUTPUT_DIR", "Overlay-output directory:"),
@@ -261,7 +262,7 @@ BANDS_B03_B04_B14 = (3, 4, 14)
 # blue = B13
 BANDS_IR_MICROPHYSICS = (15, 13, 7)
 
-REQUIRED_BAND_COUNT = 20
+REQUIRED_LAYER_COUNT = 20
 EXPECTED_HEIGHT = 450
 EXPECTED_WIDTH = 450
 
@@ -376,9 +377,9 @@ def validate_source_raster(src, tif_path):
     """Check whether a GeoTIFF matches the released raster structure."""
     errors = []
 
-    if src.count != REQUIRED_BAND_COUNT:
+    if src.count != REQUIRED_LAYER_COUNT:
         errors.append(
-            f"expected {REQUIRED_BAND_COUNT} bands, found {src.count}"
+            f"expected {REQUIRED_LAYER_COUNT} layers, found {src.count}"
         )
 
     if src.height != EXPECTED_HEIGHT or src.width != EXPECTED_WIDTH:
@@ -462,7 +463,7 @@ def safe_remove(path):
 
 def step1_generate_annotation_images():
     """
-    Generate a four-panel image for each eligible 20-band GeoTIFF.
+    Generate a four-panel image for each eligible 20-layer GeoTIFF.
 
     Upper left:
         B05/B04/B03 composite
@@ -861,7 +862,7 @@ def step2_interactive_segmentation():
             if key in (ord("s"), ord("S")):
                 if not current_selected_ids:
                     warning_message = (
-                        "No sea-fog region selected. "
+                        "No sea fog region selected. "
                         "The scene was not saved."
                     )
                     print(
@@ -911,7 +912,7 @@ def step2_interactive_segmentation():
 
 
 # =============================================================================
-# 6. Stage 3: create released image-mask overlay previews
+# 6. Stage 3: create released scene–mask overlay previews
 # =============================================================================
 
 def step3_visualize_overlays():
@@ -924,7 +925,7 @@ def step3_visualize_overlays():
     tif_files = list_tif_files(CONFIG["INPUT_TIF_DIR"])
     os.makedirs(CONFIG["OVERLAY_OUTPUT_DIR"], exist_ok=True)
 
-    print("\n[Stage 3/3] Generating image-mask overlay previews")
+    print("\n[Stage 3/3] Generating scene–mask overlay previews")
 
     generated_count = 0
     missing_mask_count = 0

@@ -1,4 +1,4 @@
-"""Compatibility entry point for the sea-fog annotation interface.
+"""Compatibility entry point for the sea fog annotation interface.
 
 The maintained implementation is ``scripts/annotate_sea_fog.py``. This file
 is retained so that links to the earlier repository filename continue to work.
